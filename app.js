@@ -49,8 +49,8 @@ async function forceRefreshRates() {
 // Validate amount input
 function validateAmount() {
     const value = amountInput.value.trim();
-    const num = parseFloat(value);
-    if (isNaN(num) || num <= 0) {
+    const num = Number(value);
+    if (value === "" || Number.isNaN(num) || num <= 0) {
         errorMsg.textContent = "Please enter a valid positive number.";
         errorMsg.style.display = "block";
         btn.disabled = true;
