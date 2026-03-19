@@ -1,0 +1,223 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4e4da;
+    font-family: 'Arial', sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+body.dark {
+    background-color: #2c2c2c;
+    color: #f4f4f4;
+}
+
+.container {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    min-height: 45vh;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+body.dark .container {
+    background-color: #333;
+    color: #f4f4f4;
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+#theme-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #af4d98;
+}
+
+form {
+    margin: 2rem 0 1rem 0;
+}
+
+form select, button, input {
+    width: 100%;
+    outline: none;
+    border: none;
+    border-radius: 0.75rem;
+}
+
+input {
+    border: 1px solid lightgray;
+    height: 3rem;
+    padding-left: 0.5rem;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    border-color: #af4d98;
+}
+
+.error-msg {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    display: none;
+}
+
+.dropdowns {
+    display: flex;
+    margin-top: 2rem;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.select-container img {
+    max-width: 2rem;
+    margin-right: 0.5rem;
+}
+
+.select-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 7rem;
+    border: 1px solid lightgray;
+    border-radius: 0.75rem;
+    background: white;
+    transition: border-color 0.3s ease;
+    position: relative;
+}
+.select-container.loading-flag::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid #af4d98;
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    z-index: 1;
+}
+.select-container.loading-flag img {
+    opacity: 0.5; /* Dim the image while loading */
+}
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+body.dark .select-container {
+    background: #444;
+    border-color: #666;
+}
+
+.select-container select {
+    font-size: 1rem;
+    background: transparent;
+}
+
+#swap-btn {
+    background: #af4d98;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 0 0.5rem;
+}
+
+#swap-btn:hover {
+    background-color: #992c7c;
+}
+
+.msg {
+    margin: 2rem 0 2rem;
+    text-align: center;
+    font-size: 1.2rem;
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+button.submit {
+    height: 3rem;
+    font-size: 1.15rem;
+    background-color: #af4d98;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: relative;
+}
+button.submit::after {
+    content: "Force a fresh rate fetch (bypasses cache)";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: #fff;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.8rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    white-space: nowrap;
+}
+button.submit:hover::after {
+    opacity: 1;
+}
+
+button.submit:hover:not(:disabled) {
+    background-color: #992c7c;
+}
+
+button.submit:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.loading {
+    text-align: center;
+    margin-top: 1rem;
+    display: none;
+    color: #af4d98;
+}
+
+@media (max-width: 600px) {
+    .dropdowns {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .select-container {
+        width: 100%;
+    }
+    #swap-btn {
+        align-self: center;
+    }
+}

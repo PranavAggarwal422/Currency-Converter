@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    <link href="style.css" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="container">
+        <h2>Currency Converter</h2>
+        <div class="theme-toggle">
+            <button id="theme-btn" aria-label="Toggle dark mode"><i class="fa-solid fa-moon"></i></button>
+        </div>
+        <form>
+            <div class="amount">
+                <label for="amount-input">Enter Amount</label>
+                <input type="text" id="amount-input" value="1" aria-describedby="amount-error">
+                <span id="amount-error" class="error-msg" role="alert"></span>
+            </div>
+
+            <div class="dropdowns">
+                <div class="from-dropdown">
+                    <label for="from-select">From</label>
+                    <div class="select-container">
+                        <img src="https://flagsapi.com/US/flat/64.png">
+                        <select id="from-select" name="from" aria-label="Select from currency">
+                            <!-- Options populated by JS -->
+                        </select>
+                    </div>
+                </div>
+                <button type="button" id="swap-btn" aria-label="Swap currencies"><i class="fa-solid fa-arrow-right-arrow-left"></i></button>
+                <div class="to-dropdown">
+                    <label for="to-select">To</label>
+                    <div class="select-container">
+                        <img src="https://flagsapi.com/IN/flat/64.png">
+                        <select id="to-select" name="to" aria-label="Select to currency">
+                            <!-- Options populated by JS -->
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="msg" role="status" aria-live="polite"></div>
+            <button type="button" class="submit" id="submit-btn">Refresh Rate</button>
+            <div class="loading" id="loading-spinner" aria-hidden="true">
+                <i class="fa-solid fa-spinner fa-spin"></i> Loading...
+            </div>
+        </form>
+    </div>
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
